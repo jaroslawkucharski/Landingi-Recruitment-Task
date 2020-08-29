@@ -1,13 +1,7 @@
 .footer {
-    padding: 20px 30px;
     width: 100vw;
-}
-
-@media only screen and (min-width: 1200px) {
-    .footer {
-        margin: 0 auto;
-        width: 1200px;
-    }
+    height: 40px;
+    text-align: center;
 }
 
 .card {
