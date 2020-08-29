@@ -23,6 +23,16 @@
 
 .heading {
     font-size: 1.5em;
+    color: #000;
+}
+.heading::after {
+    content: "_";
+}
+
+.heading:hover::after {
+    margin-left: 5px;
+    content: "_";
+    transition: .5s;
 }
 
 .headingName {
