@@ -1,0 +1,31 @@
+.header {
+    margin-bottom: 50px;
+    width: 100vw;
+    background-color: rgb(245, 245, 245);
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 30px;
+    width: 100%;
+    height: 160px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+@media only screen and (min-width: 1200px) {
+    .container {
+        width: 1200px;
+    }
+}
+
+.heading {
+    font-size: 1.5em;
+}
+
+.headingName {
+    color: rgb(37, 80, 170);
+    font-weight: 800;
+}
