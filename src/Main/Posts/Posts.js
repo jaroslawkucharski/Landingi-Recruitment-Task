@@ -12,11 +12,11 @@ const Posts = ({ posts }) => {
             {posts?.map(e => (
                 <li className={styles.post} key={e.id}>
                     <Router>
-                        <Link to={"/" + e.id}>
+                        <Link to={"/post/" + e.id}>
                             <h2 className={styles.postTitle}>{e.title}</h2>
                         </Link>
                         <p className={styles.postBody}>{e.body}</p>
-                        <Link to={"/" + e.id}>
+                        <Link to={"/post/" + e.id}>
                             <p className={styles.postMore}>/ read more /</p>
                         </Link>
                     </Router>

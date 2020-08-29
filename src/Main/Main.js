@@ -9,34 +9,19 @@ import styles from "./Main.css";
 
 import Posts from "./Posts/Posts";
 import Post from "./Post/Post";
+import Favorite from "./Favorite/Favorite";
+import NotFound from "./NotFound/NotFound";
 
-const URL_API = `https://jsonplaceholder.typicode.com/`;
-
-const Main = () => {
-    const [posts, setPosts] = useState([]);
-    const [comments, setComments] = useState([]);
-    const [favorite, setFavorite] = useState([]);
-
-    const postLimit = 12;
-
-    useEffect(() => {
-        fetch(URL_API + `posts?_start=0&_limit=${postLimit}`)
-            .then(res => res.json())
-            .then(data => setPosts(data))
-
-        fetch(URL_API + `comments`)
-            .then(res => res.json())
-            .then(data => setComments(data))
-    }, []);
-
+const Main = ({ posts, comments, setComments, favorite, sortFavorite, setFavorite, URL_API }) => {
     return (
         <main className={styles.main}>
             <div className={styles.container}>
                 <Router>
                     <Switch>
                         <Route exact path="/" component={() => (<Posts posts={posts} />)} />
-                        <Route exact path="/:post" component={() => (<Post posts={posts} comments={comments} setFavorite={setFavorite} />)} />
-                        {/* <Route component={NotFound} /> */}
+                        <Route path="/favorite" component={() => (<Favorite sortFavorite={sortFavorite} />)} />
+                        <Route path="/post/:post" component={() => (<Post posts={posts} comments={comments} setComments={setComments} favorite={favorite} setFavorite={setFavorite} URL_API={URL_API} />)} />
+                        <Route component={NotFound} />
                     </Switch>
                 </Router>
             </div>

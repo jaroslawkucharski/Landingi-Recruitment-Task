@@ -17,10 +17,15 @@
 }
 
 .postLike {
+    cursor: pointer;
     margin-top: 40px;
     color: #666;
     font-size: .8em;
     font-weight: 300;
+}
+
+.postLike:hover {
+    color: rgb(37, 80, 170);
 }
 
 .commentsHeading {
