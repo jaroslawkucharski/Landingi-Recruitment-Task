@@ -1,0 +1,121 @@
+.postTitle {
+    margin-bottom: 10px;
+    font-size: 1.4em;
+    font-weight: 700;
+}
+
+.postBody {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.postHeart {
+    color: #666;
+    font-size: .8em;
+}
+
+.postLike {
+    margin-top: 40px;
+    color: #666;
+    font-size: .8em;
+    font-weight: 300;
+}
+
+.commentsHeading {
+    margin-top: 80px;
+    color: #000;
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+.comments {
+    padding: 10px;
+    width: 100%;
+    color: rgb(37, 80, 170);
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.comment {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: rgb(245, 245, 245);
+}
+
+.commentName {
+    margin-bottom: 5px;
+    color: rgb(37, 80, 170);
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.commentEmail {
+    color: #000;
+    font-size: .8em;
+    font-weight: 300;
+}
+
+.commentBody {
+    color: #333;
+    font-size: .8em;
+    font-weight: 400;
+}
+
+.addComment {
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+    background-color: rgb(245, 245, 245);
+}
+
+input {
+    outline: none;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    width: 100%;
+    height: 30px;
+    border: 2px solid #888;
+    border-radius: 4px;
+    font-family: "Montserrat", sans-serif;
+    font-size: .8em;
+}
+
+textarea {
+    outline: none;
+    resize: none;
+    margin-bottom: 5px;
+    padding: 10px;
+    width: 100%;
+    height: 150px;
+    border: 2px solid #888;
+    border-radius: 4px;
+    font-family: "Montserrat", sans-serif;
+    font-size: .8em;
+}
+
+input:focus, textarea:focus {
+    border: 2px solid rgb(37, 80, 170);
+}
+
+input::placeholder, textarea::placeholder {
+    font-size: 1em;
+    color: #666;
+}
+
+button {
+    outline: none;
+    cursor: pointer;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: rgb(37, 80, 170);
+    border: 0;
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+    font-weight: 500;
+}
+
+button:hover {
+    background-color: #666;
+}

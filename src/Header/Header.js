@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import {
+    HashRouter as Router,
+    Link
+} from "react-router-dom";
 
 import styles from "./Header.css";
 
@@ -7,10 +11,14 @@ export default class Header extends Component {
         return (
             <header className={styles.header}>
                 <div className={styles.container}>
-                    <h1 className={styles.heading}>
+                <Router>
+                        <Link to={"/"}>
+                        <h1 className={styles.heading}>
                         <span className={styles.headingName}>Landingi</span><br />
-                        recruitment<br />task_
+                        recruitment<br />task
                     </h1>
+                        </Link>
+                    </Router>
                     <p className={styles.heart}>
                         <ion-icon name="heart" />
                     </p>
