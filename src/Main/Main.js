@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {
     HashRouter as Router,
-    Link
+    Switch,
+    Route,
 } from "react-router-dom";
 
 import styles from "./Main.css";
+
+import Posts from "./Posts/Posts";
 
 const URL_API = `https://jsonplaceholder.typicode.com/`;
 
@@ -23,21 +26,18 @@ const Main = () => {
     return (
         <main className={styles.main}>
             <div className={styles.container}>
-                <ul className={styles.posts}>
-                    {posts?.map(e => (
-                        <li className={styles.post} key={e.id}>
-                            <Router>
-                                <Link to={e.id}>
-                                    <h2 className={styles.postTitle}>{e.title}</h2>
-                                </Link>
-                                <p className={styles.postBody}>{e.body}</p>
-                                <Link>
-                                    <p className={styles.postMore}>/ read more /</p>
-                                </Link>
-                            </Router>
-                        </li>
-                    ))}
-                </ul>
+
+
+                <Router>
+                    <Switch>
+                        <Route exact path="/" component={() => (<Posts posts={posts} />)} />
+                        <Route exact path="/:postId" component={() => (<Post />)} />
+                        {/* <Route component={NotFound} /> */}
+                    </Switch>
+                </Router>
+
+
+
             </div>
         </main>
     );

@@ -11,6 +11,9 @@ export default class Header extends Component {
                         <span className={styles.headingName}>Landingi</span><br />
                         recruitment<br />task_
                     </h1>
+                    <p className={styles.heart}>
+                        <ion-icon name="heart" />
+                    </p>
                 </div>
             </header>
         );
