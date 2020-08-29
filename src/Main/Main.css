@@ -1,0 +1,54 @@
+.main {
+    margin-bottom: 100px;
+    width: 100vw;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 30px;
+    width: 100%;
+}
+
+@media only screen and (min-width: 1200px) {
+    .container {
+        width: 1200px;
+    }
+}
+
+.posts {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.post {
+    margin: 10px;
+    width: 100%;
+}
+
+@media only screen and (min-width: 1200px) {
+    .post {
+        width: 250px;
+    }
+}
+
+.postTitle {
+    margin-bottom: 10px;
+    font-size: 1.4em;
+    font-weight: 700;
+}
+
+.postBody {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.postMore {
+    color: rgb(37, 80, 170);
+    font-size: .8em;
+    font-weight: 300;
+}
