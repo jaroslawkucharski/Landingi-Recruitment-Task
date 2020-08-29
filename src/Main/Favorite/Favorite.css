@@ -11,12 +11,6 @@
     width: 100%;
 }
 
-@media only screen and (min-width: 1200px) {
-    .post {
-        width: 260px;
-    }
-}
-
 .postTitle {
     margin-bottom: 10px;
     color: #000;
@@ -43,4 +37,10 @@
 
 .postMore:hover {
     font-weight: 500;
+}
+.noArticles {
+    color: #000;
+    font-size: 1.8em;
+    font-weight: 700;
+    text-align: center;
 }

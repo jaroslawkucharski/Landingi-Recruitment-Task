@@ -6,24 +6,31 @@ import {
 
 import styles from "./Header.css";
 
-export default class Header extends Component {
-    render() {
-        return (
-            <header className={styles.header}>
-                <div className={styles.container}>
+const Header = ({ sortFavorite }) => {
+    return (
+        <header className={styles.header}>
+            <div className={styles.container}>
                 <Router>
-                        <Link to={"/"}>
+                    <Link to="/">
                         <h1 className={styles.heading}>
-                        <span className={styles.headingName}>Landingi</span><br />
+                            <span className={styles.headingName}>Landingi</span><br />
                         recruitment<br />task
                     </h1>
-                        </Link>
-                    </Router>
-                    <p className={styles.heart}>
-                        <ion-icon name="heart" />
-                    </p>
-                </div>
-            </header>
-        );
-    }
+                    </Link>
+                    <Link to="/favorite">
+                        <p className={styles.heart}>
+                            <ion-icon name="heart" />
+                            <span className={styles.notification}>
+                                {sortFavorite.length > 0
+                                    ? sortFavorite.length
+                                    : null}
+                            </span>
+                        </p>
+                    </Link>
+                </Router>
+            </div>
+        </header>
+    );
 }
+
+export default Header;
