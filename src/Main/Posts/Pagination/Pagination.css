@@ -1,0 +1,27 @@
+.pagination {
+    margin-top: 50px;
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: rgb(37, 80, 170);
+    color: #fff;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.navigation:hover {
+    background-color: #666;
+}
+
+.page {
+    cursor: pointer;
+    padding: 10px;
+    font-weight: 400;
+}
