@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import {
     HashRouter as Router,
     Link
 } from "react-router-dom";
 
 import styles from "./Header.css";
+import { AppContext } from "./../AppContext/AppContext";
 
-const Header = ({ sortFavorite }) => {
+const Header = () => {
+    const { sortFavorite } = useContext(AppContext);
+
     return (
         <header className={styles.header}>
             <div className={styles.container}>

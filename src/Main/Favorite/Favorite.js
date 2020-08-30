@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
     HashRouter as Router,
     Link
 } from "react-router-dom";
 
 import styles from "./Favorite.css";
+import { AppContext } from "./../../AppContext/AppContext";
 
-const Favorite = ({ sortFavorite }) => {
-
+const Favorite = () => {
+    const { sortFavorite } = useContext(AppContext);
 
     return (
         <>

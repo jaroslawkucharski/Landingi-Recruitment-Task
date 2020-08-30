@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import styles from "./Pagination.css";
+import { AppContext } from "./../../../AppContext/AppContext";
 
-const Pagination = ({ page, setPage, allPages }) => {
+const Pagination = () => {
+    const { page, setPage, allPages } = useContext(AppContext);
     const pagination = [];
 
     for (let i = 0; i < allPages; i++)
@@ -21,7 +23,7 @@ const Pagination = ({ page, setPage, allPages }) => {
     }
 
     const onPage = e => {
-        setPage(Number(e.target.innerText))
+        setPage(Number(e.target.innerText));
     }
 
     return (

@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
     useParams
 } from "react-router-dom";
 
 import styles from "./Post.css";
+import { AppContext } from "./../../AppContext/AppContext";
 
-const Post = ({ posts, comments, setComments, favorite, setFavorite, URL_API }) => {
+const Post = () => {
+    const { posts, comments, setComments, setFavorite, URL_API } = useContext(AppContext);
     const { post } = useParams();
     const [addNewComment, setAddNewComment] = useState({
         postId: "",

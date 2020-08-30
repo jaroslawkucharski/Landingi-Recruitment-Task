@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
     HashRouter as Router,
     Link
 } from "react-router-dom";
 
 import styles from "./Posts.css";
-
+import { AppContext } from "./../../AppContext/AppContext";
 import Pagination from "./Pagination/Pagination";
 
-const Posts = ({ posts, page, setPage, allPages }) => {
+const Posts = () => {
+    const { posts } = useContext(AppContext);
+
     return (
         <>
             <ul className={styles.posts}>
@@ -26,7 +28,7 @@ const Posts = ({ posts, page, setPage, allPages }) => {
                     </li>
                 ))}
             </ul>
-            <Pagination page={page} setPage={setPage} allPages={allPages} />
+            <Pagination />
         </>
     );
 }
