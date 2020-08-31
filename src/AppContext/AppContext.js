@@ -11,7 +11,11 @@ const AppContextProvider = ({ children }) => {
     const [allPages, setAllPages] = useState();
     const [comments, setComments] = useState([]);
     const [favorite, setFavorite] = useState([]);
-    const sortFavorite = [...new Set(favorite)];
+    const favoriteList = [...new Set(favorite)];
+    const pagination = [];
+
+    for (let i = 0; i < allPages; i++)
+        pagination.push(i);
 
     useEffect(() => {
         fetch(URL_API + `posts`)
@@ -27,8 +31,12 @@ const AppContextProvider = ({ children }) => {
             .then(data => setComments(data))
     }, [page]);
 
+    const onPage = e => {
+        setPage(Number(e.target.innerText));
+    }
+
     return (
-        <AppContext.Provider value={{ posts, page, setPage, allPages, comments, setComments, setFavorite, sortFavorite, URL_API }}>
+        <AppContext.Provider value={{ posts, pagination, onPage, page, setPage, allPages, comments, setComments, favorite, setFavorite, favoriteList, URL_API }}>
             {children}
         </AppContext.Provider>
     )

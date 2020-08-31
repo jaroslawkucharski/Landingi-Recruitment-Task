@@ -18,6 +18,7 @@ const Main = () => {
                 <Router>
                     <Switch>
                         <Route exact path="/" component={Posts} />
+                        <Route path="/page/:pageId" component={Posts} />
                         <Route path="/favorite" component={Favorite} />
                         <Route path="/post/:post" component={Post} />
                         <Route component={NotFound} />

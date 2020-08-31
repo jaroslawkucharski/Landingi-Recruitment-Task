@@ -44,3 +44,10 @@
     font-weight: 700;
     text-align: center;
 }
+
+.postDelete {
+    cursor: pointer;
+    margin-top: 20px;
+    color: #666;
+    font-size: .8em;
+}
