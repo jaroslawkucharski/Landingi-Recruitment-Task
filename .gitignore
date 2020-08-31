@@ -3,6 +3,8 @@ logs
 npm-debug.log*
 package-lock.json
 node_modules/
+HOOKI/
+useContext/
 *~
 .vscode/
 HOOKI/

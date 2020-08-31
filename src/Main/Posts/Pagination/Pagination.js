@@ -15,7 +15,7 @@ const Pagination = () => {
     useEffect(() => {
         setPage(pageId);
     }, [pageId]);
-
+   
     return (
         <Router>
             <ul className={styles.pagination}>

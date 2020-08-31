@@ -15,7 +15,7 @@ const Favorite = () => {
         const newFavorite = favorite.filter(fav => fav.id != deletePost);
         setFavorite(newFavorite);
     }
-
+    
     return (
         <>
             {favoriteList.length > 0
