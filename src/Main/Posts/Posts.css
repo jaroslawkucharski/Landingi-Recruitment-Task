@@ -7,12 +7,12 @@
 }
 
 .post {
-    margin: 10px;
     width: 100%;
 }
 
 @media only screen and (min-width: 1200px) {
     .post {
+        margin: 10px;
         width: 260px;
     }
 }
