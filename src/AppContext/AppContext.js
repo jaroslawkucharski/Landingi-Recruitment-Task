@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 
 export const AppContext = React.createContext();
 
@@ -10,33 +11,32 @@ const AppContextProvider = ({ children }) => {
     const [page, setPage] = useState(1);
     const [allPages, setAllPages] = useState();
     const [comments, setComments] = useState([]);
-    const [favorite, setFavorite] = useState([]);
-    const favoriteList = [...new Set(favorite)];
+    const [favourite, setFavourite] = useState([]);
     const pagination = [];
 
     for (let i = 0; i < allPages; i++)
         pagination.push(i);
 
     useEffect(() => {
-        fetch(URL_API + `posts`)
-            .then(res => res.json())
-            .then(data => setAllPages(Math.ceil(data.length / LIMIT)))
-
-        fetch(URL_API + `posts?_page=${page}&_limit=${LIMIT}`)
-            .then(res => res.json())
-            .then(data => setPosts(data))
-
-        fetch(URL_API + `comments`)
-            .then(res => res.json())
-            .then(data => setComments(data))
+        axios.all([
+            axios.get(URL_API + `posts`),
+            axios.get(URL_API + `posts?_page=${page}&_limit=${LIMIT}`),
+            axios.get(URL_API + `comments`)
+        ])
+            .then(res => {
+                setAllPages(Math.ceil(res[0].data.length / LIMIT));
+                setPosts(res[1].data);
+                setComments(res[2].data);
+            });
     }, [page]);
 
     const onPage = e => {
-        setPage(Number(e.target.innerText));
+        setPage(e.target.innerText);
     }
 
+
     return (
-        <AppContext.Provider value={{ posts, pagination, onPage, page, setPage, allPages, comments, setComments, favorite, setFavorite, favoriteList, URL_API }}>
+        <AppContext.Provider value={{ posts, page, setPage, allPages, comments, setComments, favourite, setFavourite, pagination, onPage, URL_API }}>
             {children}
         </AppContext.Provider>
     )

@@ -8,7 +8,7 @@ import styles from "./Header.css";
 import { AppContext } from "./../AppContext/AppContext";
 
 const Header = () => {
-    const { favoriteList } = useContext(AppContext);
+    const { favourite } = useContext(AppContext);
 
     return (
         <header className={styles.header}>
@@ -20,13 +20,13 @@ const Header = () => {
                         recruitment<br />task
                     </h1>
                     </Link>
-                    <Link to="/favorite">
+                    <Link to="/favourite">
                         <p className={styles.heart}>
                             <ion-icon name="heart" />
-                            {favoriteList.length > 0
-                                ? <span className={styles.notification}>{favoriteList.length}</span>
-                                : null}
-
+                            {favourite.length > 0
+                                ? <span className={styles.notification}>{favourite.length}</span>
+                                : null
+                            }
                         </p>
                     </Link>
                 </Router>

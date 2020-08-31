@@ -4,23 +4,23 @@ import {
     Link
 } from "react-router-dom";
 
-import styles from "./Favorite.css";
-import { AppContext } from "./../../AppContext/AppContext";
+import styles from "./Favourite.css";
+import { AppContext } from "../../AppContext/AppContext";
 
 const Favorite = () => {
-    const { favorite, setFavorite, favoriteList } = useContext(AppContext);
+    const { favourite, setFavourite } = useContext(AppContext);
 
     const onDelete = e => {
         const deletePost = e.target.id;
-        const newFavorite = favorite.filter(fav => fav.id != deletePost);
-        setFavorite(newFavorite);
+        const newFavourite = favourite.filter(fav => fav.id != deletePost);
+        setFavourite(newFavourite);
     }
-    
+
     return (
         <>
-            {favoriteList.length > 0
+            {favourite.length > 0
                 ? <ul className={styles.posts}>
-                    {favoriteList.map(e => (
+                    {favourite.map(e => (
                         <li className={styles.post} key={e.id}>
                             <Router>
                                 <Link to={"/post/" + e.id}>

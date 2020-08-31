@@ -8,7 +8,7 @@ import {
 import styles from "./Main.css";
 import Posts from "./Posts/Posts";
 import Post from "./Post/Post";
-import Favorite from "./Favorite/Favorite";
+import Favourite from "./Favourite/Favourite";
 import NotFound from "./NotFound/NotFound";
 
 const Main = () => {
@@ -19,8 +19,8 @@ const Main = () => {
                     <Switch>
                         <Route exact path="/" component={Posts} />
                         <Route path="/page/:pageId" component={Posts} />
-                        <Route path="/favorite" component={Favorite} />
-                        <Route path="/post/:post" component={Post} />
+                        <Route path="/favourite" component={Favourite} />
+                        <Route path="/post/:postId" component={Post} />
                         <Route component={NotFound} />
                     </Switch>
                 </Router>

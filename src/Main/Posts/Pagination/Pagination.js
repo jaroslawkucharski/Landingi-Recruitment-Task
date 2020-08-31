@@ -9,13 +9,13 @@ import styles from "./Pagination.css";
 import { AppContext } from "./../../../AppContext/AppContext";
 
 const Pagination = () => {
-    const { pagination, onPage, setPage, allPages } = useContext(AppContext);
+    const { setPage, allPages, pagination, onPage } = useContext(AppContext);
     const { pageId } = useParams();
 
     useEffect(() => {
         setPage(pageId);
     }, [pageId]);
-   
+
     return (
         <Router>
             <ul className={styles.pagination}>
