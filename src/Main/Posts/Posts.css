@@ -1,3 +1,9 @@
+.navHeading {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
 .posts {
     width: 100%;
     display: flex;

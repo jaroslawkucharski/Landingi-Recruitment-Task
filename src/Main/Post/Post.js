@@ -1,14 +1,15 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import {
     useParams
 } from "react-router-dom";
+import axios from 'axios';
 
 import styles from "./Post.css";
 import { AppContext } from "./../../AppContext/AppContext";
 
 const Post = () => {
-    const { posts, comments, setComments, favorite, setFavorite, URL_API } = useContext(AppContext);
-    const { post } = useParams();
+    const { posts, comments, setComments, favourite, setFavourite, URL_API } = useContext(AppContext);
+    const { postId } = useParams();
     const [addNewComment, setAddNewComment] = useState({
         postId: "",
         name: "",
@@ -17,26 +18,20 @@ const Post = () => {
     });
 
     const addToFavorite = () => {
-        posts?.filter(f => f.id == post)
-            .map(e => setFavorite(prev => [...prev, e]));
+        if (favourite?.findIndex(e => e.id == postId) > -1) return;
+        const favouritePost = posts?.find(e => e.id == postId)
+        setFavourite(prev => [...prev, favouritePost])
     }
 
     const addComment = e => {
         e.preventDefault();
-        fetch(URL_API + `posts/${post}/comments`, {
-            method: 'POST',
-            body: JSON.stringify({
-                postId: post,
-                name: addNewComment.name,
-                email: addNewComment.email,
-                body: addNewComment.body,
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
+        axios.post(URL_API + `posts/${postId}/comments`, {
+            postId: postId,
+            name: addNewComment.name,
+            email: addNewComment.email,
+            body: addNewComment.body,
         })
-            .then(res => res.json())
-            .then(data => setComments(prev => [...prev, data]))
+            .then(res => setComments(prev => [...prev, res.data]));
     }
 
     const handleChange = e => {
@@ -49,12 +44,12 @@ const Post = () => {
 
     return (
         <>
-            {posts?.filter(f => f.id == post)
+            {posts?.filter(f => f.id == postId)
                 .map(e => (
                     <div key={e.id}>
                         <h2 className={styles.postTitle}>{e.title}</h2>
                         <p className={styles.postBody}>{e.body}</p>
-                        <p className={styles.postLike} onClick={addToFavorite}>
+                        <p className={styles.postLike} onClick={addToFavorite} id={e.id}>
                             <span className={styles.addToFavorite}>
                                 <ion-icon name="heart" />
                             </span> Add article to favorite
@@ -70,7 +65,7 @@ const Post = () => {
                     <input type="email" placeholder="Your email" name="email" value={addNewComment.email} onChange={handleChange} />
                     <button type="submit">Add comment</button>
                 </form>
-                {comments?.filter(f => f.postId == post)
+                {comments?.filter(f => f.postId == postId)
                     .reverse().map(e => (
                         <div className={styles.comment} key={e.id}>
                             <h3 className={styles.commentName}>{e.name}  &#9702; <span className={styles.commentEmail}>{e.email}</span></h3>
