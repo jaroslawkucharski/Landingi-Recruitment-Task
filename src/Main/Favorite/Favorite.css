@@ -7,7 +7,7 @@
 }
 
 .post {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     width: 100%;
 }
 
@@ -47,7 +47,7 @@
 
 .postDelete {
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 15px;
     color: #666;
     font-size: .8em;
 }
