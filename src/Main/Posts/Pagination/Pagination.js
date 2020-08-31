@@ -1,35 +1,41 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import {
+    HashRouter as Router,
+    NavLink,
+    useParams
+} from "react-router-dom";
 
 import styles from "./Pagination.css";
+import { AppContext } from "./../../../AppContext/AppContext";
 
-const Pagination = ({ page, setPage, allPages }) => {
-    const pagination = [];
+const Pagination = () => {
+    const { pagination, onPage, setPage, allPages } = useContext(AppContext);
+    const { pageId } = useParams();
 
-    for (let i = 0; i < allPages; i++)
-        pagination.push(i);
-
-    const onPrev = () => {
-        page != 0
-            ? setPage(prev => prev - 1)
-            : null
-    }
-
-    const onNext = () => {
-        page != allPages
-            ? setPage(prev => prev + 1)
-            : null
-    }
-
-    const onPage = e => {
-        setPage(Number(e.target.innerText))
-    }
+    useEffect(() => {
+        setPage(pageId);
+    }, [pageId]);
 
     return (
-        <ul className={styles.pagination}>
-            <li className={styles.navigation} onClick={onPrev}>prev</li>
-            {pagination.map(e => <li key={e} className={styles.page} onClick={onPage}>{e + 1}</li>)}
-            <li className={styles.navigation} onClick={onNext}>next</li>
-        </ul>
+        <Router>
+            <ul className={styles.pagination}>
+                <NavLink to="/page/1">
+                    <li className={styles.navigation}>&laquo;</li>
+                </NavLink>
+                {pagination.map(e => (
+                    e == 0
+                        ? <NavLink exact to={"/"} key={e} className={styles.page} activeClassName={styles.pageActive}>
+                            <li onClick={onPage} className={pageId == 1 ? styles.pageActive : null}>{e + 1}</li>
+                        </NavLink>
+                        : <NavLink to={"/page/" + (e + 1)} key={e} className={styles.page} activeClassName={styles.pageActive}>
+                            <li onClick={onPage}>{e + 1}</li>
+                        </NavLink>
+                ))}
+                <NavLink to={"/page/" + allPages}>
+                    <li className={styles.navigation}>&raquo;</li>
+                </NavLink>
+            </ul>
+        </Router>
     );
 }
 

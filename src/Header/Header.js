@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import {
     HashRouter as Router,
     Link
 } from "react-router-dom";
 
 import styles from "./Header.css";
+import { AppContext } from "./../AppContext/AppContext";
 
-const Header = ({ sortFavorite }) => {
+const Header = () => {
+    const { favoriteList } = useContext(AppContext);
+
     return (
         <header className={styles.header}>
             <div className={styles.container}>
@@ -20,11 +23,10 @@ const Header = ({ sortFavorite }) => {
                     <Link to="/favorite">
                         <p className={styles.heart}>
                             <ion-icon name="heart" />
-                            <span className={styles.notification}>
-                                {sortFavorite.length > 0
-                                    ? sortFavorite.length
-                                    : null}
-                            </span>
+                            {favoriteList.length > 0
+                                ? <span className={styles.notification}>{favoriteList.length}</span>
+                                : null}
+
                         </p>
                     </Link>
                 </Router>

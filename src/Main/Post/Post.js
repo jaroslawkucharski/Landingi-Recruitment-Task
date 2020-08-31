@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
     useParams
 } from "react-router-dom";
 
 import styles from "./Post.css";
+import { AppContext } from "./../../AppContext/AppContext";
 
-const Post = ({ posts, comments, setComments, favorite, setFavorite, URL_API }) => {
+const Post = () => {
+    const { posts, comments, setComments, favorite, setFavorite, URL_API } = useContext(AppContext);
     const { post } = useParams();
     const [addNewComment, setAddNewComment] = useState({
         postId: "",
         name: "",
         email: "",
-        body: ""
+        body: "",
     });
 
     const addToFavorite = () => {
@@ -27,7 +29,7 @@ const Post = ({ posts, comments, setComments, favorite, setFavorite, URL_API }) 
                 postId: post,
                 name: addNewComment.name,
                 email: addNewComment.email,
-                body: addNewComment.body
+                body: addNewComment.body,
             }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
@@ -53,7 +55,7 @@ const Post = ({ posts, comments, setComments, favorite, setFavorite, URL_API }) 
                         <h2 className={styles.postTitle}>{e.title}</h2>
                         <p className={styles.postBody}>{e.body}</p>
                         <p className={styles.postLike} onClick={addToFavorite}>
-                            <span className={styles.postHeart}>
+                            <span className={styles.addToFavorite}>
                                 <ion-icon name="heart" />
                             </span> Add article to favorite
                         </p>

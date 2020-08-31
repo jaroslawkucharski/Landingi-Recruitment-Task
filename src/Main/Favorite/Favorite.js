@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
     HashRouter as Router,
     Link
 } from "react-router-dom";
 
 import styles from "./Favorite.css";
+import { AppContext } from "./../../AppContext/AppContext";
 
-const Favorite = ({ sortFavorite }) => {
+const Favorite = () => {
+    const { favorite, setFavorite, favoriteList } = useContext(AppContext);
 
+    const onDelete = e => {
+        const deletePost = e.target.id;
+        const newFavorite = favorite.filter(fav => fav.id != deletePost);
+        setFavorite(newFavorite);
+    }
 
     return (
         <>
-            {sortFavorite.length > 0
+            {favoriteList.length > 0
                 ? <ul className={styles.posts}>
-                    {sortFavorite.map(e => (
+                    {favoriteList.map(e => (
                         <li className={styles.post} key={e.id}>
                             <Router>
                                 <Link to={"/post/" + e.id}>
@@ -21,8 +28,9 @@ const Favorite = ({ sortFavorite }) => {
                                 </Link>
                                 <p className={styles.postBody}>{e.body}</p>
                                 <Link to={"/post/" + e.id}>
-                                    <p className={styles.postMore}>/ read more /</p>
+                                    <p className={styles.postMore}>/ read more / </p>
                                 </Link>
+                                <p className={styles.postDelete} onClick={onDelete} id={e.id}><ion-icon name="trash-outline" /> remove from favorites</p>
                             </Router>
                         </li>
                     ))}
