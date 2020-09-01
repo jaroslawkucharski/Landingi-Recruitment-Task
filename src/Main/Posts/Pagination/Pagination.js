@@ -9,7 +9,7 @@ import styles from "./Pagination.css";
 import { AppContext } from "./../../../AppContext/AppContext";
 
 const Pagination = () => {
-    const { setPage, allPages, pagination, onPage } = useContext(AppContext);
+    const { allPages, setPage, pagination, onPage } = useContext(AppContext);
     const { pageId } = useParams();
 
     useEffect(() => {

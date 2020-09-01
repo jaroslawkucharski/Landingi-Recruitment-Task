@@ -8,13 +8,7 @@ import styles from "./Favourite.css";
 import { AppContext } from "../../AppContext/AppContext";
 
 const Favorite = () => {
-    const { favourite, setFavourite } = useContext(AppContext);
-
-    const onDelete = e => {
-        const deletePost = e.target.id;
-        const newFavourite = favourite.filter(fav => fav.id != deletePost);
-        setFavourite(newFavourite);
-    }
+    const { favourite, onDelete } = useContext(AppContext);
 
     return (
         <>
@@ -30,8 +24,8 @@ const Favorite = () => {
                                 <Link to={"/post/" + e.id}>
                                     <p className={styles.postMore}>/ read more / </p>
                                 </Link>
-                                <p className={styles.postDelete} onClick={onDelete} id={e.id}><ion-icon name="trash-outline" /> remove from favorites</p>
                             </Router>
+                            <p className={styles.postDelete} onClick={onDelete} id={e.id}><ion-icon name="trash-outline" /> remove from favorites</p>
                         </li>
                     ))}
                 </ul>
