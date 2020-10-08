@@ -7,9 +7,11 @@ Recruitment task for [Landingi](https://landingi.com/).
 Recruitment task.
 
 ## Technologies
-* REACT
-* ES6
+* react
+* react-router
 * Axios
+* ES6
+* JSON
 * CSS Module
 * Webpack
 
